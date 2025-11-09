@@ -27,16 +27,18 @@ spec:
 
 ---
 
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: mysql
-spec: 
-  selector: # labels are used as a selectors
-  app: mysql
-  tier: mysql
-  project: expense
+  namespace: expense
+spec:
+  selector:
+    app: mysql
+    tier: mysql
+    project: expense
   ports:
-  - protocal: TCP
-    port: 3306 # service port
-    targetPort: 3306 
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP
