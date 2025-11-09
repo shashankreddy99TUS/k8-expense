@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: mysql
   namespace: expense
-  # labels of deployment resource 
   labels:
     app: mysql
     tier: mysql
@@ -12,9 +11,9 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-    app: mysql
-    tier: mysql
-    project: expense
+      app: mysql
+      tier: mysql
+      project: expense
   template:
     metadata:
       labels:
@@ -23,6 +22,5 @@ spec:
         project: expense
     spec:
       containers:
-      - name: nginx
-        image: shashanka00315964/mysql:1.0.0
-        
+        - name: mysql
+          image: shashanka00315964/mysql:1.0.0
