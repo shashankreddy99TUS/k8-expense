@@ -21,10 +21,16 @@ spec:
         app: backend
         tier: backend
         project: expense
-    spec:
-      containers:
-      - name: nginx
-        image: shashanka00315964/backend:1.0.0
+  spec:
+  containers:
+    - name: backend
+      image: shashanka00315964/backend:1.0.0
+      env:
+        - name: DB_HOST
+          value: "mysql"
+        - name: DB_PORT
+          value: "3306"
+
 
 ---
 kind: Service
