@@ -23,7 +23,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: shashanka00315964/backend:1.0.0
+          image: image: shashanka00315964/backend:latest
+
 
 ---
 
