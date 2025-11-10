@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: backend
   namespace: expense
+  # labels of deployment resource
   labels:
     app: backend
     tier: backend
@@ -22,23 +23,21 @@ spec:
         project: expense
     spec:
       containers:
-        - name: backend
-          image: shashanka00315964/backend:1.0.0 
-          ports:
-            - containerPort: 8080
+      - name: nginx
+        image: shashanka00315964/backend:1.0.0
+
 ---
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
   name: backend
   namespace: expense
 spec:
-  selector:
+  selector: # labels are used as selectors
     app: backend
     tier: backend
     project: expense
   ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  type: ClusterIP
+  - protocol: TCP
+    port: 8080 # service port
+    targetPort: 8080
